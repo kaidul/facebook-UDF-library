@@ -16,26 +16,27 @@
  * limitations under the License.
  */
 
-package com.facebook.hive.udf;
+package com.facebook.hive.udf.string;
 
 import org.apache.hadoop.hive.ql.exec.Description;
 import org.apache.hadoop.hive.ql.exec.UDF;
 
 
 /**
- * Returns true when the haystack string (first argument) ends with the
+ * Returns true when the haystack string (first argument) begins with the
  * needle string (second argument).  If either argument is NULL then NULL is
  * returned.
  *
  * @author jonchang
  */
-@Description(name = "ends_with",
-             value = "_FUNC_(haystack, needle)")
-public class UDFEndsWith extends UDF {
+@Description(name = "starts_with",
+             value = "_FUNC_(haystack, needle) - Return whether " +
+                     "haystack begins with needle.")
+public class UDFStartsWith extends UDF {
   public Boolean evaluate(String haystack, String needle) {
     if (haystack == null || needle == null) {
       return null;
     }
-    return haystack.endsWith(needle);
+    return haystack.startsWith(needle);
   }
 }

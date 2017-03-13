@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package com.facebook.hive.udf;
+package com.facebook.hive.udf.string;
 
 import org.apache.hadoop.hive.ql.exec.Description;
 import org.apache.hadoop.hive.ql.exec.UDF;

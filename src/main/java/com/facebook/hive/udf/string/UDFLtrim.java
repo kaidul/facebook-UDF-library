@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package com.facebook.hive.udf;
+package com.facebook.hive.udf.string;
 
 import org.apache.hadoop.hive.ql.exec.Description;
 import org.apache.hadoop.hive.ql.exec.UDF;
@@ -24,16 +24,16 @@ import org.apache.hadoop.hive.ql.exec.UDF;
 
 /**
  * Returns the string s (first argument) with the characters
- * in the string chars (second argument) trimmed off both the
- * left and the right.
+ * in the string chars (second argument) trimmed off the left
+ * side.
  *
  * @author atfiore
  */
-@Description(name = "udftrim",
+@Description(name = "udfltrim",
              value = "_FUNC_(s, chars) - Return the string s " +
                      "with the characters in chars trimmed off " +
-                     "both the left and the right.")
-public class UDFTrim extends UDF {
+                     "the left side.")
+public class UDFLtrim extends UDF {
   public String evaluate(String s, String chars) {
     if (s == null) {
       return null;
@@ -51,18 +51,8 @@ public class UDFTrim extends UDF {
       }
     }
     int j = s.length() - 1;
-    done = false;
-    while (j > i && !done) {
-      if (chars.indexOf(s.charAt(j)) == -1) {
-        done = true;
-      } else {
-        j--;
-      }
-    }
 
     if (i > j) {
-      // i was incremented all the way through the string,
-      // so the whole string matches and we return ""
       return new String();
     }
 

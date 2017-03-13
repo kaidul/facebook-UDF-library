@@ -16,28 +16,26 @@
  * limitations under the License.
  */
 
-package com.facebook.hive.udf;
+package com.facebook.hive.udf.string;
 
 import org.apache.hadoop.hive.ql.exec.Description;
 import org.apache.hadoop.hive.ql.exec.UDF;
 
 
 /**
- * Returns the index where the needle string (first argument) occurs in the
- * haystack string (second argument).  The index begins at 0.  If the string
- * is not found then -1 is returned.  If either argument is NULL then NULL
- * is returned.
+ * Returns true when the haystack string (first argument) ends with the
+ * needle string (second argument).  If either argument is NULL then NULL is
+ * returned.
  *
  * @author jonchang
  */
-@Description(name = "find_in_string",
-             value = "_FUNC_(needle, haystack) - Return the index at which " +
-                     "needle appears in haystack.")
-public class UDFFindInString extends UDF {
-  public Integer evaluate(String needle, String haystack) {
+@Description(name = "ends_with",
+             value = "_FUNC_(haystack, needle)")
+public class UDFEndsWith extends UDF {
+  public Boolean evaluate(String haystack, String needle) {
     if (haystack == null || needle == null) {
       return null;
     }
-    return haystack.indexOf(needle);
+    return haystack.endsWith(needle);
   }
 }
