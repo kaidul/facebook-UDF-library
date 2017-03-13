@@ -1,8 +1,21 @@
 # facebook-UDF-library
 
-create temporary function md5 as 'com.facebook.hive.udf.UDFMD5';
+Maven compilable Facebook Hive UDF APIs collection found from Jira issue [Hive-1545][1].
 
-hive> select md5("@#789QWE");
-OK
+## Build
+
+``` shell
+mvn package
+```
+
+This will create the executable in target directory.
+
+## Usage
+``` shell
+hive > CREATE FUNCTION md5 as 'com.facebook.hive.udf.UDFMD5';
+
+hive > select md5("@#789QWE");
 c40a3517f12eeb416aad1037b99434e0
-Time taken: 1.867 seconds, Fetched: 1 row(s)
+```
+
+[1]: https://issues.apache.org/jira/browse/HIVE-1545
