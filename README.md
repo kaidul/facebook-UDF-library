@@ -11,6 +11,9 @@ mvn package
 This will create the executable in target directory.
 
 ## Usage
+
+Add facebook-udfs-x.x.x-all.jar into Hive.
+
 ``` shell
 hive > CREATE FUNCTION md5 as 'com.facebook.hive.udf.UDFMD5';
 
